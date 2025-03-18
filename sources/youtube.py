@@ -1,3 +1,7 @@
+"""This file handles youtube related tasks, using yt-dlp
+to find the url of a song and then uses ffmped in the backend
+to download it."""
+
 import yt_dlp as ytdlp
 
 
@@ -9,7 +13,9 @@ class YouTubeHandler:
         "youtube_include_hls_manifest": False,
     }
     _params_ffmpeg = {
-        "options": "-vn"  # This removes video giving only audio
+        "options": "-vn -filter:a loudnorm"  # Removes video.
+        # This normalizes auto so it is always somewhat the
+        # same volume.
     }
 
     @classmethod
