@@ -8,6 +8,12 @@ class Bot(commands.Cog):
         self.client = client
 
     @commands.command()
+    async def ping(self, ctx):
+        await ctx.send(
+            f"Bot is online! ✅ Latency: {round(self.client.latency * 1000)}ms"
+        )
+
+    @commands.command()
     async def help(self, ctx):
         commands = [
             "- ❓ `?help` - Show this message.",
